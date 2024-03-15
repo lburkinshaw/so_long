@@ -1,0 +1,51 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   so_long.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/03/14 14:28:44 by lburkins          #+#    #+#             */
+/*   Updated: 2024/03/15 12:06:20 by lburkins         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SO_LONG_H
+# define SO_LONG_H
+
+# include "libft/libft.h"
+# include <stdlib.h> //for malloc?
+# include <limits.h> //for max/min_int. check if necessary?
+#include <unistd.h>
+//WILL ALSO NEED OTHER INCLUDES FOR MLX LIBRARY
+
+/*  STRUCT HERE THAT WILL BE POPULATED WITH MAP DATA */
+typedef struct s_position
+{
+	int	x;
+	int	y;
+}	t_positon;
+
+/*typedef struct s_map
+{
+	char		**full;
+	int			rows;// y
+	int			columns;// x
+	int			collectibles;
+	int			exit;
+	int			players;
+	t_positon	player;
+}	t_map;*/
+
+typedef struct s_map
+{
+	char	**map;
+	void	*object;
+	int		columns; //x; 
+	int		rows; //y;
+	int		collect;
+}	t_map;
+
+int	main(int argc, char **argv);
+
+#endif
