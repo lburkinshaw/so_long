@@ -1,45 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 14:44:52 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/20 11:26:10 by lburkins         ###   ########.fr       */
+/*   Created: 2024/03/20 11:25:19 by lburkins          #+#    #+#             */
+/*   Updated: 2024/03/20 12:13:30 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void print_map(t_map *map)
+void	error_n_exit(char *msg, t_map *game)
 {
-	int i = 0;
-	while (i < map->rows)
-	{
-		ft_printf("%s\n", map->map[i]);
-		i++;
-	}
+	if (msg)
+		write(2, msg, ft_strlen(msg));
+	else
+		write(2, "Error\n", 6);
+	free(game);
+	exit(1);
 }
 
-int	main (int argc, char **argv)
-{
-	t_map *game;
-	
-	game = malloc(sizeof(t_map));
-	if (!game)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	if (argc != 2)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	check_n_init_map(game, argv[1]);
-	print_map(game);
-	free(game);
-	ft_printf("finished\n");//REMOVE
-	return (0);
-}

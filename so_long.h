@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:44 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/20 10:52:05 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/03/20 12:14:52 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,20 @@ typedef struct s_position
 
 typedef struct s_map
 {
-	char	**map;
-	void	*object;
-	int		columns; //x; 
-	int		rows; //y;
-	int		collect;
+	char		**map;
+	void		*object;
+	int			columns; //x; 
+	int			rows; //y;
+	int			collectibles;
+	int			exit;
+	int			players;
+	t_positon	player;
 }	t_map;
 
 int		main(int argc, char **argv);
 void	check_n_init_map(t_map *map, char *arg);
+void	check_walls(t_map	*game);
+void	check_characters(t_map *game);
+void	error_n_exit(char *msg, t_map *game);
 
 #endif

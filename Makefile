@@ -6,14 +6,16 @@
 #    By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 14:25:07 by lburkins          #+#    #+#              #
-#    Updated: 2024/03/20 10:57:28 by lburkins         ###   ########.fr        #
+#    Updated: 2024/03/20 11:34:22 by lburkins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
 
 CFILES =	so_long.c \
-			init_map.c
+			init_map.c \
+			check_map.c \
+			error_handling.c
 
 OFILES = $(CFILES:.c=.o)
 
