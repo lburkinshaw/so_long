@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:44 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/15 12:06:20 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/03/20 10:52:05 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "libft/libft.h"
 # include <stdlib.h> //for malloc?
 # include <limits.h> //for max/min_int. check if necessary?
-#include <unistd.h>
+# include <unistd.h>
+# include <fcntl.h>
 //WILL ALSO NEED OTHER INCLUDES FOR MLX LIBRARY
 
 /*  STRUCT HERE THAT WILL BE POPULATED WITH MAP DATA */
@@ -46,6 +47,7 @@ typedef struct s_map
 	int		collect;
 }	t_map;
 
-int	main(int argc, char **argv);
+int		main(int argc, char **argv);
+void	check_n_init_map(t_map *map, char *arg);
 
 #endif
