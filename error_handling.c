@@ -1,34 +1,50 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   error_handling.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 14:44:52 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/21 12:23:06 by lburkins         ###   ########.fr       */
+/*   Created: 2024/03/20 11:25:19 by lburkins          #+#    #+#             */
+/*   Updated: 2024/03/25 11:31:22 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main (int argc, char **argv)
+void	free_array(char **array)
 {
-	t_map *game;
-	
-	game = malloc(sizeof(t_map));
-	if (!game)
+	int	i;
+
+	i = 0;
+	while (array[i])
 	{
-		write(2, "Error\n", 6);
-		exit(1);
+		free(array[i]);
+		i++;
 	}
-	if (argc != 2)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	init_map(game, argv[1]);
-	free_game(game);
-	ft_printf("finished\n");//REMOVE
-	return (0);
+	free(array);
 }
+
+void	free_game(t_map *game)
+{
+	if (game->map)
+		free_array(game->map);
+	// if (game->collectibles)
+	// 	game->collectibles = 0;
+	// if (game->exit)
+	// 	game->exit = 0;
+	// if (game->players)
+	// 	game->players = 0;
+	free(game);
+}
+
+void	error_n_exit(char *msg, t_map *game)
+{
+	if (msg)
+		write(2, msg, ft_strlen(msg));
+	else
+		write(2, "Error\n", 6);
+	free(game);
+	exit(1);
+}
+

@@ -1,34 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.c                                          :+:      :+:    :+:   */
+/*   so_long_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 14:44:52 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/21 12:23:06 by lburkins         ###   ########.fr       */
+/*   Created: 2024/03/25 11:43:16 by lburkins          #+#    #+#             */
+/*   Updated: 2024/03/25 11:43:58 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	main (int argc, char **argv)
+int	count_chars(char *str, char c)
 {
-	t_map *game;
-	
-	game = malloc(sizeof(t_map));
-	if (!game)
+	int	i;
+	int	count;
+
+	i = 0;
+	count = 0;
+	while (str[i])
 	{
-		write(2, "Error\n", 6);
-		exit(1);
+		if (str[i] == c)
+			count++;
+		i++;
 	}
-	if (argc != 2)
-	{
-		write(2, "Error\n", 6);
-		exit(1);
-	}
-	init_map(game, argv[1]);
-	free_game(game);
-	ft_printf("finished\n");//REMOVE
-	return (0);
+	return (count);
 }
