@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:15:55 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/25 12:21:21 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:54:23 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	**make_area(char **zone, t_position size)
 	return (new);
 }
 
-void	check_fill(char **map, t_map *game)
+int	check_fill(char **map, t_map *game)
 {
 	int	y;
 	int	x;
@@ -50,18 +50,20 @@ void	check_fill(char **map, t_map *game)
 		while (x < game->columns)
 		{
 			if (map[y][x] == 'E' || map[y][x] == 'C')
-			{
-				free_array(map);
-				error_n_exit("Error: invalid path\n", game);
-			}
+				return (1);
+			// {
+			// 	free_array(map);
+			// 	error_n_exit("Error: invalid path\n", game);
+			// }
 			x++;
 		}
 		y++;
 	}
 	ft_printf("Valid path\n");
+	return (0);
 }
 
-void	check_route(t_map *game)
+int	check_route(t_map *game)
 {
 	t_position	size;
 	char		**fill_map;
@@ -91,6 +93,12 @@ void	check_route(t_map *game)
 		ft_printf("%s\n", fill_map[i]);
 		i++;
 	}
-	check_fill(fill_map, game);
+	if (check_fill(fill_map, game) == 1)
+	{
+		free_array(fill_map);
+		// error_n_exit("Error: invalid route", game);
+		return (1);
+	}
 	free_array(fill_map);
+	return (0);
 }

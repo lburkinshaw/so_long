@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:44 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/25 12:11:16 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:51:30 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	print_map(t_map *map); //remove before submit.
 void	init_map(t_map *game, char *arg);
 char	*file_to_str(t_map *game, char *arg);
 void	check_map(t_map *game);
-void	check_route(t_map *game);
+int		check_route(t_map *game);
 void	flood_fill(char **map, t_position size, t_position begin, t_map *game);
 int		count_chars(char *str, char c);
 void	free_array(char **array);

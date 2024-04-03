@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:25:19 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/25 11:31:22 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/03 11:41:37 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,6 @@ void	free_game(t_map *game)
 {
 	if (game->map)
 		free_array(game->map);
-	// if (game->collectibles)
-	// 	game->collectibles = 0;
-	// if (game->exit)
-	// 	game->exit = 0;
-	// if (game->players)
-	// 	game->players = 0;
 	free(game);
 }
 
@@ -47,4 +41,3 @@ void	error_n_exit(char *msg, t_map *game)
 	free(game);
 	exit(1);
 }
-

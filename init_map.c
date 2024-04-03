@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:49:46 by lburkins          #+#    #+#             */
-/*   Updated: 2024/03/25 11:43:24 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/03 10:46:41 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,7 @@ void	set_game_values(t_map	*game)
 	while (game->map[y])
 	{
 		while (game->map[y][x])
-		{
-			/*below isnt working yet*/
-			// if (game->map[y][x] == 'P')
-			// {
-			// 	game->player.y = y;
-			// 	game->player.x = x;
-			// }
 			x++;
-		}
 		if (game->columns == 0)
 			game->columns = x;
 		else if (x != game->columns)
@@ -104,14 +96,17 @@ void	set_game_values(t_map	*game)
 		game->rows = y;
 	else if (x != game->rows)
 		error_n_exit("Error. Invalid shape.\n", game);
-	ft_printf("columns = %d\n", game->columns);
-	ft_printf("rows = %d\n", game->rows);
+	// ft_printf("columns = %d\n", game->columns);
+	// ft_printf("rows = %d\n", game->rows);
 }
 
 void	set_player_position(t_map *game)
 {
-	int y = 0;//rows(vertical)
-	int x = 0; //columns(across)
+	int	y;
+	int	x;
+
+	y = 0;//rows(vertical)
+	x = 0;//columns(across)
 	game->player.x = -1;
 	game->player.y = -1;
 	while (game->map[y] && game->player.x == -1 && game->player.y == -1)
@@ -140,7 +135,7 @@ void	init_map(t_map *game, char *arg)
 	if (str[0] == '\0')
 		error_n_exit("Error. Empty map.\n", game);
 	check_characters(str, game);
-	ft_printf("string is:\n%s\n", str);
+	// ft_printf("string is:\n%s\n", str);
 	game->map = ft_split(str, '\n');
 	free(str);
 	set_game_values(game);
