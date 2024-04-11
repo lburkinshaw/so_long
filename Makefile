@@ -6,45 +6,58 @@
 #    By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 14:25:07 by lburkins          #+#    #+#              #
-#    Updated: 2024/03/25 12:03:37 by lburkins         ###   ########.fr        #
+#    Updated: 2024/04/10 14:40:03 by lburkins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+NAME		=	so_long
+CC			=	cc
+CFLAGS		=	-Wall -Wextra -Werror -g #remove "-g" for submit
+SRCS		=	so_long.c \
+				init_map.c \
+				check_map.c \
+				check_route.c \
+				flood_fill.c \
+				mlx_test.c \
+				load_images.c \
+				moves.c \
+				directions.c \
+				so_long_utils.c \
+				error_handling.c
+			
+OBJS		=	$(SRCS:.c=.o)
+HEADER		=	so_long.h
+GLFW_DIR	=	/Users/lburkins/.brew/opt/glfw/lib
+MLX			=	MLX42/build/libmlx42.a
+MLX_HEADER	=	MLX42/include/MLX42/MLX42.h
+LIBFT		=	libft/libft.a
 
-CFILES =	so_long.c \
-			init_map.c \
-			check_map.c \
-			check_route.c \
-			flood_fill.c \
-			so_long_utils.c \
-			error_handling.c
+all:			$(NAME)
 
-OFILES = $(CFILES:.c=.o)
+$(LIBFT):
+					@make -C ./libft
 
-CFLAGS = -Wall -Wextra -Werror -g #remove for submit
+$(MLX):
+					@cd MLX42 && cmake -B build && cmake --build build -j4
 
-#ADD IN MORE THINGS FOR MLX (MLX_PATH, MLX_LIB, MLX_FLAGS...)
+$(NAME):		$(OBJS) $(MLX) $(LIBFT) $(HEADER)
+					@$(CC) $(OBJS) $(MLX) $(LIBFT) -ldl -pthread -lm -L$(GLFW_DIR) -lglfw -I $(MLX_HEADER) -o $(NAME)
+					@echo "  *************  "
+					@echo "  ** so_long **  "
+					@echo "  *************  "
+					@echo "Compiled ✅"
 
-LIBFT = libft/libft.a
-
-all: $(NAME)
-
-$(NAME): $(OFILES)
-	cd libft && make all
-	cc $(CFLAGS) $(OFILES) $(LIBFT) -o $(NAME)
-
-libft:
-	make -C libft
+%.o:			%.c
+					@$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -f $(OFILES)
-	cd libft && make clean
+					@rm -f $(OBJS)
+					@rm -rf MLX42/build
+					make fclean -C ./libft
 
-fclean: clean
-	rm -f $(NAME)
-	cd libft && make fclean
+fclean:			clean
+					@rm -f $(NAME)
 
-re: fclean all
+re:				fclean all
 
-.PHONY: all clean fclean re
+.PHONY:			all clean fclean re

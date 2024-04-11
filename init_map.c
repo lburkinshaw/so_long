@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:49:46 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/03 10:46:41 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/08 14:10:38 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ char	*file_to_str(t_map *game, char *arg)
 		if (tmp)
 			free(tmp);
 		tmp = ft_strjoin(result, line);
-		result = tmp;
+		result = (ft_strjoin(tmp, "\n"));//adding in the \n fixed unexpected behaviour in large files.
 		free(line);
 	}
 	close(fd);
@@ -63,7 +63,10 @@ void	check_characters(char *str, t_map *game)
 	if (count_chars(str, 'P') != 1)
 		error_n_exit("Error: invalid no. of players\n", game);
 	else
+	{
 		game->players = (count_chars(str, 'P'));
+		ft_printf("%d\n", game->players);
+	}
 	if (count_chars(str, 'E') != 1)
 		error_n_exit("Error: invalid no. of exits\n", game);
 	else
@@ -75,13 +78,59 @@ void	check_characters(char *str, t_map *game)
 	ft_printf("Characters OK.\n");
 }
 
+// void check_characters(char *str, t_map *game) {
+//     int i = 0;
+//     int player_count = 0;
+//     int exit_count = 0;
+//     int collectible_count = 0;
+
+//     while (str[i]) {
+//         if (str[i] != '1' && str[i] != '0' && str[i] != '\n'
+//             && str[i] != 'P' && str[i] != 'E' && str[i] != 'C') {
+//             error_n_exit("Error: invalid characters\n", game);
+//         }
+
+//         if (str[i] == 'P') {
+//             player_count++;
+//         } else if (str[i] == 'E') {
+//             exit_count++;
+//         } else if (str[i] == 'C') {
+//             collectible_count++;
+//         }
+
+//         i++;
+//     }
+// 	ft_printf("players: %d\nexits: %d\ncollectibles%d\n", player_count, exit_count, collectible_count);
+//     if (player_count != 1) {
+//         error_n_exit("Error: invalid number of players\n", game);
+//     } else {
+//         game->players = player_count;
+//     }
+
+//     if (exit_count != 1) {
+//         error_n_exit("Error: invalid number of exits\n", game);
+//     } else {
+//         game->exit = exit_count;
+//     }
+
+//     if (collectible_count < 1) {
+//         error_n_exit("Error: invalid number of collectibles\n", game);
+//     } else {
+//         game->collectibles = collectible_count;
+//     }
+
+//     ft_printf("Characters OK.\n");
+// }
+
 void	set_game_values(t_map	*game)
 {
 	game->columns = 0;
 	game->rows = 0;
-	int y = 0;//rows(vertical)
-	int x = 0; //columns(across)
-	
+	int y;
+	int x;
+
+	y= 0;//rows(vertical)
+	x = 0; //columns(across)
 	while (game->map[y])
 	{
 		while (game->map[y][x])
@@ -129,17 +178,21 @@ void	set_player_position(t_map *game)
 void	init_map(t_map *game, char *arg)
 {
 	char	*str;
+	int		len;
 
+	len = ft_strlen(arg);
+	if (len < 4 || ft_strncmp(arg + len - 4, ".ber", 4) != 0)
+		error_n_exit("file error\n", game);
 	str = NULL;
 	str = file_to_str(game, arg);
 	if (str[0] == '\0')
 		error_n_exit("Error. Empty map.\n", game);
+	ft_printf("String is:\n%s\n", str);
 	check_characters(str, game);
-	// ft_printf("string is:\n%s\n", str);
 	game->map = ft_split(str, '\n');
 	free(str);
 	set_game_values(game);
 	set_player_position(game);
 	check_map(game);
-	print_map(game);
+	print_map(game);//DELETE
 }
