@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:56:29 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/11 11:27:08 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/11 13:29:26 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	init_window(t_map *game)
 						"so_long", true);//could set to false //create function to set tile size instead of BLOCK?? 
 	if (!game->mlx_ptr)
 		error_n_exit("MLX error\n", game);
-	images = init_images(game->mlx_ptr);//takes care of load_png and texture_to_image
+	images = init_images(game);//takes care of load_png and texture_to_image
 	if (!images)
 		error_n_exit("", game);//need to check
 	game->img = images;
@@ -105,6 +105,8 @@ void	select_img(t_map *game, int y, int x)
 		if (mlx_image_to_window(game->mlx_ptr, game->img->exit_closed,
 				x * PIXELS, y * PIXELS) < 0)
 			error_n_exit("Failed to put image to window\n", game);//need to free anything else?
+			game->exit_pos.x = x;
+			game->exit_pos.y = y;
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:15:55 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/03 10:54:23 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/12 16:19:34 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,19 +76,19 @@ int	check_route(t_map *game)
 	fill_map = make_area(game->map, size);
 	i = 0;
 	rows = game->rows;
-	ft_printf("map to fill:\n");/* DELETE*/
-	while (i < rows)/* DELETE*/
+	ft_printf("map to fill:\n");// DELETE
+	while (i < rows)// DELETE
 	{
 		ft_printf("%s\n", fill_map[i]);
 		i++;
 	}
-	ft_printf("player position; y=%d, x=%d\n", game->player.y, game->player.x);/* DELETE*/
+	ft_printf("player position; y=%d, x=%d\n", game->player.y, game->player.x);// DELETE
 	tmp_collect = game->collectibles;
 	flood_fill(fill_map, size, game->player, game);
 	game->collectibles = tmp_collect;
-	ft_printf("filled map:\n");/* DELETE*/
+	ft_printf("filled map:\n");// DELETE
 	i = 0;
-	while (i < rows) /* DELETE*/
+	while (i < rows) // DELETE
 	{
 		ft_printf("%s\n", fill_map[i]);
 		i++;
@@ -102,3 +102,5 @@ int	check_route(t_map *game)
 	free_array(fill_map);
 	return (0);
 }
+
+

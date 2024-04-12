@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:44 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/10 14:12:16 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/12 14:30:58 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	error_n_exit(char *msg, t_map *game);
 void	error_message(char *msg);
 //mlx
 void	init_mlx_stuff(t_map *game);
-t_img	*init_images(mlx_t *mlx); 
+t_img	*init_images(t_map *game); 
 void	move_hook(mlx_key_data_t keydata, void *data);
 t_map	*move_up(t_map *game);
 t_map	*move_down(t_map *game);

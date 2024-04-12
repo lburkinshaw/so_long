@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:18:02 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/11 11:23:45 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:57:15 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@
 
 void	move_select(t_map *game, char line, char dir)
 {
-	ft_prinntf("move select");
 	if (line == 'y')
 	{
 		if (dir == 'u')
@@ -69,9 +68,8 @@ void	move_select(t_map *game, char line, char dir)
 
 void	move_player(t_map *game, char line, char dir)
 {
-	ft_prinntf("move player");
 	move_select(game, line, dir);
-	// load_monkey(game, dir);
+	// load_monkey(game, dir);//not necessary if not doing diff images for r, l, u, d
 }
 
 void	move_hook(mlx_key_data_t keydata, void *data)
