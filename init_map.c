@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:49:46 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/12 14:25:58 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:29:59 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,14 @@ char	*file_to_str(t_map *game, char *arg)
 		error_n_exit("Error: map could not be opened.\n", game);
 	while ((line = get_next_line(fd)) != NULL)
 	{
-		if (tmp)
-			free(tmp);
+		// if (tmp)
+		// 	free(tmp);
 		tmp = ft_strjoin(result, line);
+		if (*result)
+			free(result);
 		result = (ft_strjoin(tmp, "\n"));//adding in the \n fixed unexpected behaviour in large files.
 		free(line);
+		free(tmp);
 	}
 	close(fd);
 	return (result);

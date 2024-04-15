@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:25:19 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/10 11:59:04 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:55:46 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ void	free_game(t_map *game)
 {
 	if (game->map)
 		free_array(game->map);
+	if (game->img)
+		free(game->img);
 	free(game);
 }
 

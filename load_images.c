@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:33:17 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/11 12:03:47 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:32:35 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_img	*load_grass_texture(t_map *game, t_img *img)
 		error_message("Problem with texture to image\n");
 		return (NULL);
 	}
-	mlx_delete_texture (grass);
+	mlx_delete_texture(grass);
 	return (img);
 }
 
@@ -38,7 +38,7 @@ t_img	*load_wall_texture(t_map *game, t_img *img)
 
 	wall = mlx_load_png("./images/wall.png");
 	img->wall = mlx_texture_to_image(game->mlx_ptr, wall);
-	mlx_delete_texture (wall);
+	mlx_delete_texture(wall);
 	if (!img->wall)
 	{
 		mlx_close_window(game->mlx_win);
@@ -54,7 +54,7 @@ t_img	*load_monkey_texture(t_map *game, t_img *img)
 
 	monkey = mlx_load_png("./images/monkey_fwd.png");
 	img->monkey = mlx_texture_to_image(game->mlx_ptr, monkey);
-	mlx_delete_texture (monkey);
+	mlx_delete_texture(monkey);
 	if (!img->monkey)
 	{
 		mlx_close_window(game->mlx_win);

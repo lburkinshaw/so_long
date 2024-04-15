@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:28:44 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/12 14:30:58 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:52:32 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,17 +31,6 @@ typedef struct s_position
 	int	y;
 }	t_position;
 
-/*typedef struct s_map
-{
-	char		**full;
-	int			rows;// y
-	int			columns;// x
-	int			collectibles;
-	int			exit;
-	int			players;
-	t_positon	player;
-}	t_map;*/
-
 typedef struct s_img
 {
 	mlx_image_t			*wall;
@@ -50,11 +39,11 @@ typedef struct s_img
 	mlx_image_t			*monkey;
 	mlx_image_t			*exit_closed;
 	mlx_image_t			*exit_open;
-	mlx_image_t			*enemy;
-	mlx_image_t			*moves_print;
-	mlx_image_t			*moves_nbr;
-	mlx_image_t			*banana_nbr;
-	mlx_image_t			*banana_2;
+	// mlx_image_t			*enemy;
+	// mlx_image_t			*moves_print;
+	// mlx_image_t			*moves_nbr;
+	// mlx_image_t			*banana_nbr;
+	// mlx_image_t			*banana_2;
 }	t_img;
 
 typedef struct s_map

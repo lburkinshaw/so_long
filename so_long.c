@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 14:44:52 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/04 15:04:05 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:48:49 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	main(int argc, char **argv)
 	}
 	init_map(game, argv[1]);
 	init_mlx_stuff(game);
+	// exit(0);
 	//init_player
 	//mlx_test(game);
 	free_game(game);

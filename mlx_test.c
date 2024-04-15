@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 10:56:29 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/11 13:29:26 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/15 11:53:44 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,12 @@ void	init_mlx_stuff(t_map *game)
 //	init_walls(game);// sets image for walls/obstacles game->walls
 	mlx_key_hook(game->mlx_ptr, move_hook, game);
 	mlx_loop(game->mlx_ptr);
+	mlx_delete_image(game->mlx_ptr, game->img->banana);
+	mlx_delete_image(game->mlx_ptr, game->img->wall);
+	mlx_delete_image(game->mlx_ptr, game->img->grass);
+	mlx_delete_image(game->mlx_ptr, game->img->monkey);
+	mlx_delete_image(game->mlx_ptr, game->img->exit_closed);
+	mlx_delete_image(game->mlx_ptr, game->img->exit_open);
 	mlx_terminate(game->mlx_ptr);
 }
 
