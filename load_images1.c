@@ -1,115 +1,94 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   load_images.c                                      :+:      :+:    :+:   */
+/*   load_images1.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:33:17 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/15 11:32:35 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:20:57 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_img	*load_grass_texture(t_map *game, t_img *img)
+static void	load_grass_texture(t_map *game, t_img *img)
 {
 	mlx_texture_t	*grass;
 
 	grass = mlx_load_png("./images/grass.png");
 	if (!grass)
 	{
-		error_message("Problem with loading png\n");
-		return (NULL);
+		error_message("Error loading png\n");
+		return ;
 	}
 	img->grass = mlx_texture_to_image(game->mlx_ptr, grass);
 	if (!img->grass)
 	{
 		error_message("Problem with texture to image\n");
-		return (NULL);
+		return ;
 	}
 	mlx_delete_texture(grass);
-	return (img);
 }
 
-t_img	*load_wall_texture(t_map *game, t_img *img)
+static void	load_wall_texture(t_map *game, t_img *img)
 {
 	mlx_texture_t	*wall;
 
 	wall = mlx_load_png("./images/wall.png");
+	if (!wall)
+	{
+		error_message("Error loading png\n");
+		return ;
+	}
 	img->wall = mlx_texture_to_image(game->mlx_ptr, wall);
 	mlx_delete_texture(wall);
 	if (!img->wall)
 	{
 		mlx_close_window(game->mlx_win);
 		error_message("Problem with texture to image\n");
-		return (NULL);
+		return ;
 	}
-	return (img);
 }
 
-t_img	*load_monkey_texture(t_map *game, t_img *img)
+static void	load_monkey_texture(t_map *game, t_img *img)
 {
 	mlx_texture_t	*monkey;
 
-	monkey = mlx_load_png("./images/monkey_fwd.png");
+	monkey = mlx_load_png("./images/monkey.png");
+	if (!monkey)
+	{
+		error_message("Error loading png\n");
+		return ;
+	}
 	img->monkey = mlx_texture_to_image(game->mlx_ptr, monkey);
 	mlx_delete_texture(monkey);
 	if (!img->monkey)
 	{
 		mlx_close_window(game->mlx_win);
 		error_message("Problem with texture to image\n");
-		return (NULL);
+		return ;
 	}
-	return (img);
 }
 
-t_img	*load_banana_texture(t_map *game, t_img *img)
+static void	load_banana_texture(t_map *game, t_img *img)
 {
 	mlx_texture_t	*banana;
 
 	banana = mlx_load_png("./images/banana.png");
+	if (!banana)
+	{
+		error_message("Error loading png\n");
+		return ;
+	}
 	img->banana = mlx_texture_to_image(game->mlx_ptr, banana);
 	mlx_delete_texture(banana);
 	if (!img->banana)
 	{
 		mlx_close_window(game->mlx_win);
 		error_message("Problem with texture to image\n");
-		return (NULL);
+		return ;
 	}
-	return (img);
-}
-
-t_img	*load_exit_closed(t_map *game, t_img	*img)
-{
-	mlx_texture_t	*exit;
-
-	exit = mlx_load_png("./images/exit.png");
-	img->exit_closed = mlx_texture_to_image(game->mlx_ptr, exit);
-	mlx_delete_texture(exit);
-	if (!img->exit_closed)
-	{
-		mlx_close_window(game->mlx_win);
-		error_message("Problem with texture to image\n");
-		return (NULL);
-	}
-	return (img);
-}
-
-t_img	*load_exit_open(t_map *game, t_img *img)
-{
-	mlx_texture_t	*exit;
-
-	exit = mlx_load_png("./images/exit_open.png");
-	img->exit_open = mlx_texture_to_image(game->mlx_ptr, exit);
-	mlx_delete_texture(exit);
-	if (!img->exit_open)
-	{
-		mlx_close_window(game->mlx_win);
-		error_message("Problem with texture to image\n");
-		return (NULL);
-	}
-	return (img);
 }
 
 t_img	*init_images(t_map *game)
@@ -119,16 +98,16 @@ t_img	*init_images(t_map *game)
 	assets = (t_img *)ft_calloc(1, sizeof(t_img));
 	if (!assets)
 		return (NULL);
-	assets = load_grass_texture(game, assets);
-	assets = load_wall_texture(game, assets);
-	assets = load_banana_texture(game, assets);
-	assets = load_monkey_texture(game, assets);
-	assets = load_exit_closed(game, assets);
-	assets = load_exit_open(game, assets);
+	load_grass_texture(game, assets);
+	load_wall_texture(game, assets);
+	load_banana_texture(game, assets);
+	load_exit_closed(game, assets);
+	load_exit_open(game, assets);
+	load_monkey_texture(game, assets);
 	if (!assets->grass || !assets->wall || !assets->banana
-		|| !assets->exit_open || !assets->exit_closed)//need to check this. could also do with a flag pointer. how can i free whole struct? 
+		|| !assets->exit_open || !assets->exit_closed || !assets->monkey)
 	{
-		free(assets);//need to free each bit inividually if/when malloced?? have i malloced?
+		free(assets);
 		return (NULL);
 	}
 	return (assets);

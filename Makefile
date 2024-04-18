@@ -6,22 +6,24 @@
 #    By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 14:25:07 by lburkins          #+#    #+#              #
-#    Updated: 2024/04/10 14:40:03 by lburkins         ###   ########.fr        #
+#    Updated: 2024/04/18 16:54:16 by lburkins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME		=	so_long
 CC			=	cc
-CFLAGS		=	-Wall -Wextra -Werror -g #remove "-g" for submit
+CFLAGS		=	-Wall -Wextra -Werror
 SRCS		=	so_long.c \
 				init_map.c \
 				check_map.c \
 				check_route.c \
 				flood_fill.c \
-				mlx_test.c \
-				load_images.c \
+				run_mlx.c \
+				load_images1.c \
+				load_images2.c \
 				moves.c \
 				directions.c \
+				game_actions.c \
 				so_long_utils.c \
 				error_handling.c
 			

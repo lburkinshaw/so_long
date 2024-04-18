@@ -6,47 +6,11 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:18:02 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/11 11:57:15 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:40:17 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "so_long.h"
-
-// void	load_monkey(t_map *game, char dir)
-// {
-// 	if (mlx_image_to_window(game->mlx_ptr, game->img->grass, 
-// 				game->player.x * PIXELS, game->player.y * PIXELS) < 0)
-// 		error_n_exit("Failed to put image to window\n", game);
-// 	if (dir == 'u')
-// 	{
-// 		game->player.y -= 1;
-// 		if (mlx_image_to_window(game->mlx_ptr, game->img->monkey,
-// 				game->player.x * PIXELS, game->player.y * PIXELS) < 0)
-// 			error_n_exit("Failed to put image to window\n", game);
-// 	}
-// 	if (dir == 'd')
-// 	{
-// 		game->player.y +=1;
-// 		if (mlx_image_to_window(game->mlx_ptr, game->img->monkey,
-// 			game->player.x * PIXELS, game->player.y * PIXELS) < 0)
-// 			error_n_exit("Failed to put image to window\n", game);
-// 	}
-// 	if (dir == 'r')
-// 	{
-// 		game->player.x +=1;
-// 		if (mlx_image_to_window(game->mlx_ptr, game->img->monkey,
-// 			game->player.x * PIXELS, game->player.y * PIXELS) < 0)
-// 			error_n_exit("Failed to put image to window\n", game);
-// 	}	
-// 	if (dir == 'l')
-// 		{
-// 		game->player.x -=1;
-// 		if (mlx_image_to_window(game->mlx_ptr, game->img->monkey,
-// 			game->player.x * PIXELS, game->player.y * PIXELS) < 0)
-// 			error_n_exit("Failed to put image to window\n", game);
-// 	}	
-// }
 
 void	move_select(t_map *game, char line, char dir)
 {
@@ -69,7 +33,6 @@ void	move_select(t_map *game, char line, char dir)
 void	move_player(t_map *game, char line, char dir)
 {
 	move_select(game, line, dir);
-	// load_monkey(game, dir);//not necessary if not doing diff images for r, l, u, d
 }
 
 void	move_hook(mlx_key_data_t keydata, void *data)

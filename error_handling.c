@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:25:19 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/15 11:55:46 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/18 16:32:34 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,6 @@ void	error_n_exit(char *msg, t_map *game)
 {
 	if (msg)
 		error_message(msg);
-	/*else
-		write(2, "Error\n", 6);*/ //doesnt seem like it would come up? always include min error msg.
 	free(game);
 	exit(1);
 }
