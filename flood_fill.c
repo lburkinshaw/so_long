@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:02:50 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/18 16:46:35 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:24:58 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,7 @@ void	fill(char **map, t_position size, t_position curr, t_map *game)
 		|| valid_char(map[curr.y][curr.x]) == 0)
 		return ;
 	if (map[curr.y][curr.x] == 'E')
-	{
 		map[curr.y][curr.x] = 'F';
-	}
 	if (map[curr.y][curr.x] == 'C')
 	{
 		game->collectibles--;

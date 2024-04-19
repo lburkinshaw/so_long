@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:49:46 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/18 16:47:27 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:09:38 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static char	*file_to_str(t_map *game, char *arg)
 	tmp = NULL;
 	fd = open(arg, O_RDONLY);
 	if (fd == -1)
-		error_n_exit("Error: map could not be opened.\n", game);
+		error_n_exit("Error: map could not be opened\n", game);
 	line = get_next_line(fd);
 	while (line)
 	{
@@ -79,18 +79,12 @@ static void	set_game_values(t_map	*game)
 		if (game->columns == 0)
 			game->columns = x;
 		else if (x != game->columns)
-		{
-			free_array(game->map);
-			error_n_exit("Error: invalid shape.\n", game);
-		}
+			error_n_exit_array("Error: invalid shape\n", game, game->map);
 		y++;
 	}
-	if (game->rows == 0)
-		game->rows = y;
-	else if (x != game->rows)
-		error_n_exit("Error: invalid shape.\n", game);
-	if (game->rows > 23 || game->columns > 45)
-		error_n_exit("Error: map too big\n", game);
+	game->rows = y;
+	if (game->rows > 20 || game->columns > 40)
+		error_n_exit_array("Error: map too big\n", game, game->map);
 }
 
 static void	set_player_position(t_map *game)
@@ -99,18 +93,19 @@ static void	set_player_position(t_map *game)
 	int	x;
 
 	y = 0;
-	x = 0;
-	game->player.x = -1;
-	game->player.y = -1;
-	while (game->map[y] && game->player.x == -1 && game->player.y == -1)
+	game->player_pos.x = -1;
+	game->player_pos.y = -1;
+	while (game->map[y] && game->player_pos.x == -1 && game->player_pos.y == -1)
 	{
 		x = 0;
-		while (game->map[y][x] && game->player.x == -1 && game->player.y == -1)
+		while (game->map[y][x] && game->player_pos.x == -1
+			&& game->player_pos.y == -1)
 		{
 			if (game->map[y][x] == 'P')
 			{
-				game->player.x = x;
-				game->player.y = y;
+				game->player_pos.x = x;
+				game->player_pos.y = y;
+				return ;
 			}
 			x++;
 		}
@@ -130,7 +125,7 @@ void	init_map(t_map *game, char *arg)
 	str = NULL;
 	str = file_to_str(game, arg);
 	if (str[0] == '\0')
-		error_n_exit("Error: empty map.\n", game);
+		error_n_exit("Error: empty map\n", game);
 	check_characters(str, game);
 	game->map = ft_split(str, '\n');
 	free(str);

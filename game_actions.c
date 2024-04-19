@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 16:29:05 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/18 17:19:12 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/19 13:33:57 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,8 @@ void	check_game_status(t_map *game, bool moved)
 				game->exit_pos.x * PIXELS, game->exit_pos.y * PIXELS) < 0)
 			error_message("Failed to put image to window");
 		game->img->exit_closed->instances->enabled = false;
-		game->map[game->exit_pos.y][game->exit_pos.x] = '0';
-		if (game->player.x == game->exit_pos.x \
-			&& game->player.y == game->exit_pos.y)
+		if (game->player_pos.x == game->exit_pos.x \
+			&& game->player_pos.y == game->exit_pos.y)
 		{
 			ft_printf("🍌 Congratulations! 🍌\n");
 			ft_printf("🍌 You made it through the portal with\n");

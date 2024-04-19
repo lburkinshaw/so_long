@@ -6,13 +6,13 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 13:18:02 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/18 16:40:17 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:32:12 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	move_select(t_map *game, char line, char dir)
+static void	move_player(t_map *game, char line, char dir)
 {
 	if (line == 'y')
 	{
@@ -28,11 +28,6 @@ void	move_select(t_map *game, char line, char dir)
 		else
 			move_left(game);
 	}
-}
-
-void	move_player(t_map *game, char line, char dir)
-{
-	move_select(game, line, dir);
 }
 
 void	move_hook(mlx_key_data_t keydata, void *data)

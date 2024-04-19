@@ -6,7 +6,7 @@
 #    By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 14:25:07 by lburkins          #+#    #+#              #
-#    Updated: 2024/04/18 16:54:16 by lburkins         ###   ########.fr        #
+#    Updated: 2024/04/19 11:37:52 by lburkins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,7 @@ SRCS		=	so_long.c \
 				check_route.c \
 				flood_fill.c \
 				run_mlx.c \
+				render_map.c \
 				load_images1.c \
 				load_images2.c \
 				moves.c \

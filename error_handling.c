@@ -6,11 +6,17 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 11:25:19 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/18 16:32:34 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/19 12:18:47 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
+void	error_n_exit_array(char *msg, t_map *game, char **array)
+{
+	free_array(array);
+	error_n_exit(msg, game);
+}
 
 void	free_array(char **array)
 {

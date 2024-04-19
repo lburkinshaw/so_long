@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/05 15:33:17 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/18 16:20:57 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/19 14:41:15 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static void	load_grass_texture(t_map *game, t_img *img)
 	img->grass = mlx_texture_to_image(game->mlx_ptr, grass);
 	if (!img->grass)
 	{
-		error_message("Problem with texture to image\n");
+		error_message("Error with texture to image\n");
 		return ;
 	}
 	mlx_delete_texture(grass);
@@ -46,7 +46,7 @@ static void	load_wall_texture(t_map *game, t_img *img)
 	if (!img->wall)
 	{
 		mlx_close_window(game->mlx_win);
-		error_message("Problem with texture to image\n");
+		error_message("Error with texture to image\n");
 		return ;
 	}
 }
@@ -66,7 +66,7 @@ static void	load_monkey_texture(t_map *game, t_img *img)
 	if (!img->monkey)
 	{
 		mlx_close_window(game->mlx_win);
-		error_message("Problem with texture to image\n");
+		error_message("Error with texture to image\n");
 		return ;
 	}
 }
@@ -86,7 +86,7 @@ static void	load_banana_texture(t_map *game, t_img *img)
 	if (!img->banana)
 	{
 		mlx_close_window(game->mlx_win);
-		error_message("Problem with texture to image\n");
+		error_message("Error with texture to image\n");
 		return ;
 	}
 }
