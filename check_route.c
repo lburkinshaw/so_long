@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/25 12:15:55 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/19 11:56:15 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/22 12:05:47 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,14 @@ int	check_route(t_map *game)
 {
 	t_position	size;
 	char		**fill_map;
-	int			tmp_collect;
+	// int			tmp_collect;
 
 	size.x = game->columns;
 	size.y = game->rows;
 	fill_map = make_area(game->map, size);
-	tmp_collect = game->collectibles;
+	// tmp_collect = game->collectibles;
 	flood_fill(fill_map, size, game->player_pos, game);
-	game->collectibles = tmp_collect;
+	// game->collectibles = tmp_collect;
 	if (check_fill(fill_map, game) == 1)
 	{
 		free_array(fill_map);

@@ -6,7 +6,7 @@
 /*   By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/20 10:49:46 by lburkins          #+#    #+#             */
-/*   Updated: 2024/04/19 14:09:38 by lburkins         ###   ########.fr       */
+/*   Updated: 2024/04/22 16:18:40 by lburkins         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,13 +93,10 @@ static void	set_player_position(t_map *game)
 	int	x;
 
 	y = 0;
-	game->player_pos.x = -1;
-	game->player_pos.y = -1;
-	while (game->map[y] && game->player_pos.x == -1 && game->player_pos.y == -1)
+	while (game->map[y])
 	{
 		x = 0;
-		while (game->map[y][x] && game->player_pos.x == -1
-			&& game->player_pos.y == -1)
+		while (game->map[y][x])
 		{
 			if (game->map[y][x] == 'P')
 			{
