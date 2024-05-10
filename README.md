@@ -1,4 +1,4 @@
-# so_long
+# so_long 🐒
 ## A simple 2D game in C that uses the MLX42 graphics library
 
 A project created as part of my studies at Hive Helsinki.
