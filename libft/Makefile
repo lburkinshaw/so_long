@@ -6,7 +6,7 @@
 #    By: lburkins <lburkins@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/21 14:26:43 by lburkins          #+#    #+#              #
-#    Updated: 2024/02/13 11:58:38 by lburkins         ###   ########.fr        #
+#    Updated: 2024/05/06 13:36:51 by lburkins         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -66,16 +66,24 @@ CFLAGS = -Wall -Wextra -Werror
 
 CC = cc
 
+ANSI_GREEN := \033[0;32m
+ANSI_CYAN := \033[0;36m
+ANSI_RESET := \033[0m
+
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	ar rcs $(NAME) $(OFILES) 
+	@ar rcs $(NAME) $(OFILES) 
+	@echo "** $(ANSI_GREEN)LIBFT Compiled$(ANSI_RESET) ✅ **"
  
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
+
 clean:
-	rm -f $(OFILES)
+	@rm -f $(OFILES)
 
 fclean: clean
-	rm -f $(NAME) 
+	@rm -f $(NAME)
 
 re: fclean all
 
